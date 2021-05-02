@@ -52,8 +52,8 @@ function FormationSelection(props) {
             <div className="formation">
                 <form className="form">
                     <label htmlFor="formation">Select formation</label>
-                    <select onChange={changeFormation} name="formation" id="formation-select">
-                        <option value="0" disabled selected hidden>Select different</option>
+                    <select onChange={changeFormation} defaultValue="0" name="formation" id="formation-select">
+                        <option value="0" disabled hidden>Select different</option>
                         <option value="4-3-3">4 - 3 - 3</option>
                         <option value="4-2-3-1">4 - 2 - 3 - 1</option>
                         <option value="4-4-2">4 - 4 - 2</option>

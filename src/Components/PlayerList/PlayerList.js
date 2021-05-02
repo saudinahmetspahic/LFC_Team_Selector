@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './PlayerList.css'
 import { Players } from '../../Data/Players'
+import { PlayerContextAPI } from '../Player/Player.js'
 
 function PlayerList(props) {
     const [selectedPlayers, setSelectedPlayers] = useState([]);
@@ -23,10 +24,7 @@ function PlayerList(props) {
         });
     });
 
-    const PlayerGetSelected = (e) => {
-        console.log(e);
-        let playerid = e.key;
-        alert("Player List: " + playerid);
+    const PlayerGetSelected = (playerid) => {
         props.playerSelected(playerid);
     }
 
@@ -34,7 +32,7 @@ function PlayerList(props) {
         <div className="list-background">
             <div id="cover">
                 {selectedPlayers.map((player) => {
-                    return <div className="player-image" key={player.id} onClick={PlayerGetSelected}>
+                    return <div className="player-image-preview" key={player.id} onClick={() => PlayerGetSelected(player.id)}>
                         <img src={player.image} alt="" />
                         <div className="info">
                             <h4>{player.name}</h4>

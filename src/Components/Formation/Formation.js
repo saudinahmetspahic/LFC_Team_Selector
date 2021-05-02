@@ -1,60 +1,43 @@
-import React, { useEffect, useState } from 'react';
-import SelectPlayer from '../SelectPlayer/SelectPlayer'
-import { Global } from '../../Data/Global';
-import './Formation.css';
+import React, { Component, useEffect, useState } from 'react';
+import Player from '../Player/Player'
 
+import { Global } from '../../Data/Global';
+import { Players } from '../../Data/Players';
+import './Formation.css';
 
 function Formation(props) {
     const [selectedPlayer, setSelectedPlayer] = useState(0);
+    const [formation, setFormation] = useState([]);
 
     useEffect(() => {
-        CreateFormation();
+        let formationLines = ["1"];
+        formationLines.push(...Global.formation.split("-"));
+        setFormation(formationLines);
     }, []);
 
-    const PlayerClicked = (e) => {
-        setSelectedPlayer(e.target.id);
+
+    const test = () => {
+        alert("test");
     }
-    const CreateColumn = (numOfPlayers) => {
-        var main = document.getElementById("playerFormation");
-        var addedPlayersCount = document.getElementsByClassName("player").length;
-
-        let column = document.createElement("div");
-        column.style.height = "100%";
-        column.style.minWidth = "50px";
-        column.style.margin = "5px";
-        column.className = "d-flex flex-column justify-content-center";
-
-        for (let i = 1; i <= numOfPlayers; i++) {
-            let player = document.createElement("div");
-            player.id = addedPlayersCount + i;
-            player.className = "player player-not-selected";
-            player.addEventListener("click", PlayerClicked);
-            column.appendChild(player);
-        }
-
-        main.appendChild(column);
-        main.firstChild.firstChild.style.backgroundColor = "yellow";
-    }
-
-    const CreateFormation = () => {
-        let formation = Global.formation.split("-");
-        document.getElementById("playerFormation").innerHTML = "";
-        CreateColumn(1);
-        for (let i = 0; i < formation.length; i++) {
-            CreateColumn(formation[i]);
-        }
-    }
-
-    const playerGetSelected = (playerid) => {
-        alert("Formation: " + playerid);
-        setSelectedPlayer(0);
-    }
-
+   
     return (
         <div className="player-formation" id="playerFormation">
-            {selectedPlayer && <SelectPlayer playerSelected={playerGetSelected}></SelectPlayer>}
+            {formation.map((line, index) => {
+                return <div key={index} className="players-line">
+                    {Array.from(Array(parseInt(line)), (e, i) => {
+                        return <Player key={i} playerid={0}></Player>
+                    })}
+                </div>
+            })}
+
+
+
+            {/* {selectedPlayer && <SelectPlayer playerSelected={playerGetSelected}></SelectPlayer>} */}
         </div>
     );
 }
+
+
+
 
 export default Formation;

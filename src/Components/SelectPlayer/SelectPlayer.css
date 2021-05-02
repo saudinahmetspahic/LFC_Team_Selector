@@ -24,3 +24,10 @@
 .position-img:hover{
     object-fit: cover;
 }
+
+.btn {
+    color: white;
+    background-color: rgb(200,16,46);
+    border: none;
+    min-width: 200px;
+}

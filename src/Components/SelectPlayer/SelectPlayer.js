@@ -11,7 +11,6 @@ function SelectPlayer(props) {
     const [position, setPosition] = useState('');
 
     const playerSelected = (playerid) => {
-        alert("Select Player: " + playerid);
         props.playerSelected(playerid);
     }
 
@@ -25,6 +24,7 @@ function SelectPlayer(props) {
                     <img onClick={() => setPosition('FOR')} className="position-img" src={forw_icon} alt="FORW" />
                 </div>
                 <PlayerList position={position} playerSelected={playerSelected}></PlayerList>
+                <button className="btn" onClick={() => props.hideSelectPlayer()}>CLOSE</button>
             </div>
         </div>
     );

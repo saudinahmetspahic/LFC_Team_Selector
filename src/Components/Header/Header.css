@@ -55,3 +55,17 @@
     width: 100%;
     background-color: white;
 }
+
+.hideNav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    height: auto;
+    margin: 0px;
+    padding: 3px;
+}
+
+.hideNav img, .hideNav ul{
+    display: none;
+}

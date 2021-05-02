@@ -8,7 +8,7 @@
     user-select: none;
 }
 
-.player-image{
+.player-image-preview{
     width: 300px;
     box-sizing: border-box;
     position: relative;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Global } from '../../Data/Global'
 import './Dialog.css'
 import '../../App.css'
+import kopish_logo from '../../Images/kopish_logo.jpg'
 
 function Dialog(props) {
     const [option, setOption] = useState(Global.option);
@@ -31,7 +32,7 @@ function Dialog(props) {
             <div className="dialog-content d-flex">
                 <div className="w-50">
                     <h1>{props.title}</h1>
-                    <img className="kopish-logo" src="https://yt3.ggpht.com/ytc/AAUvwnjCfyaFVkTj24qkd8RXkKfpiyINYt8BVK9Abl5jEA=s176-c-k-c0x00ffffff-no-rj" alt="" />
+                    <img className="kopish-logo" src={kopish_logo} alt="" />
                 </div>
                 <form className="w-50 form text-center d-flex flex-column justify-content-between align-items-center">
                     <div className="d-flex">
